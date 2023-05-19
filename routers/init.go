@@ -194,6 +194,10 @@ func NormalRoutes(ctx context.Context) *web.Route {
 		prefix := "/api/actions"
 		r.Mount(prefix, actions_router.Routes(ctx, prefix))
 	}
+	if setting.Huggingface.Enabled {
+		prefix := "/api/huggingface"
+		r.Mount(prefix, actions_router.Routes(ctx, prefix))
+	}
 
 	return r
 }
