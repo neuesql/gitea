@@ -31,6 +31,7 @@ import (
 	"code.gitea.io/gitea/modules/util"
 	"code.gitea.io/gitea/modules/web"
 	actions_router "code.gitea.io/gitea/routers/api/actions"
+	huggingface_router "code.gitea.io/gitea/routers/api/huggingface"
 	packages_router "code.gitea.io/gitea/routers/api/packages"
 	apiv1 "code.gitea.io/gitea/routers/api/v1"
 	"code.gitea.io/gitea/routers/common"
@@ -196,7 +197,7 @@ func NormalRoutes(ctx context.Context) *web.Route {
 	}
 	if setting.Huggingface.Enabled {
 		prefix := "/api/huggingface"
-		r.Mount(prefix, actions_router.Routes(ctx, prefix))
+		r.Mount(prefix, huggingface_router.Routes(ctx, prefix))
 	}
 
 	return r

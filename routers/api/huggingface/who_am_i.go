@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-func HandleWhoAmI(ctx *context.APIContext) {
+func WhoAMIHandler(ctx *context.APIContext) {
 	token := ctx.Req.Header.Get("Bearer")
 
 	//todo how to getWhoAmIResponseByToken, mapping into this response
@@ -27,7 +27,6 @@ func HandleWhoAmI(ctx *context.APIContext) {
 		EmailVerified: true,
 		IsPro:         false,
 		Orgs:          nil,
-		Scope:         nil,
 	}
 	ctx.JSON(http.StatusOK, whoAmIResponse)
 }
